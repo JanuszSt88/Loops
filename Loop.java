@@ -6,25 +6,33 @@ public class Loop {
 
     public static void main(String[] args) {
 
-        File f=new File("tekst.txt");
+        String plik="C:....tekst.txt";
+        File f=new File(plik);
 
         try {
             BufferedReader bSc = new BufferedReader(new FileReader(f));
             bSc.skip(1);
-            System.out.println(bSc.readLine());
+
+            while (true){
+                String str = bSc.readLine();
+                if (str==null) break;
+                System.out.println(str);
+            }
         }
         catch (Exception exc){
-            System.out.println("Brak pliku wejścowego");
+            System.out.println("Brak pliku wejściowego");
         }
 
 
         try {
             Scanner sc = new Scanner(f);
             sc.skip("\uFeFF");
+
+            while (sc.hasNextLine())
             System.out.println(sc.nextLine());
         }
         catch (Exception exc){
-            System.out.println("Brak pliku wejścowego");
+            System.out.println("Brak pliku wejściowego");
         }
 
 
